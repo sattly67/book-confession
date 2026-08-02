@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Di Antara Lembar yang Tak Pernah Kuberikan</title>
+  <meta name="description" content="Sebuah novel interaktif tentang keberanian untuk jujur." />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/book.css" />
+  <link rel="stylesheet" href="css/animation.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Bar antarmuka global: musik & indikator halaman -->
+    <header class="chrome">
+      <button class="music-toggle" type="button" aria-pressed="false" aria-label="Hidupkan musik ambience">
+        <svg class="music-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+        <span class="ui-label">Hidupkan Musik</span>
+      </button>
+
+      <nav class="progress-indicator" aria-label="Kemajuan membaca">
+        <span class="progress-indicator__dot"></span>
+        <span class="progress-indicator__dot"></span>
+      </nav>
+    </header>
+
+    <!-- ============================================================
+         SCENE 0 — LOADING
+         ============================================================ -->
+    <section class="scene" data-scene="loading">
+      <div class="scene__backdrop"></div>
+      <div class="scene__glow"></div>
+      <div class="scene__desk"></div>
+      <div class="scene__particles"></div>
+
+      <div class="scene__stage">
+        <div class="book book-reveal" aria-hidden="true" style="pointer-events:none;">
+          <div class="book__pages-stack"></div>
+          <div class="book__cover">
+            <div class="book__spine-shadow"></div>
+            <div class="book__ornament"></div>
+          </div>
+        </div>
+        <p class="ui-label fade-in" style="animation-delay:1.2s; opacity:0;" data-story="loading-label"></p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HALAMAN 1 — COVER
+         ============================================================ -->
+    <section class="scene" data-scene="cover">
+      <div class="scene__backdrop"></div>
+      <div class="scene__glow"></div>
+      <div class="scene__desk"></div>
+      <div class="scene__particles"></div>
+
+      <div class="scene__stage">
+        <p class="fade-in-up" style="font-style:italic; text-align:center; color:var(--paper-cream-dim); font-size:0.95rem; animation-delay:0.3s;" data-story="cover-dedication"></p>
+
+        <div class="book zoom-in-soft" style="animation-delay:0.6s;">
+          <div class="candle">
+            <div class="candle__flame"></div>
+            <div class="candle__body"></div>
+          </div>
+          <div class="book__pages-stack"></div>
+          <div class="book__cover" role="button" tabindex="0" aria-label="Buka buku">
+            <div class="book__spine-shadow"></div>
+            <div class="book__ornament"></div>
+            <div>
+              <p class="book__title">Di Antara Lembar<br />yang Tak Pernah Kuberikan</p>
+              <p class="book__subtitle" data-story="cover-cta"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/story.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/interaction.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
