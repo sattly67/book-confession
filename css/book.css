@@ -1,0 +1,148 @@
+/* ==========================================================================
+   book.css — objek buku fisik: sampul, punggung, halaman
+   ========================================================================== */
+
+.book {
+  --book-w: min(78vw, 340px);
+  --book-h: calc(var(--book-w) * 1.42);
+  position: relative;
+  width: var(--book-w);
+  height: var(--book-h);
+  perspective: 2400px;
+}
+
+.book__pages-stack {
+  position: absolute;
+  inset: 0;
+  border-radius: 2px 6px 6px 2px;
+  background: linear-gradient(90deg, #cbb98f 0%, var(--paper-cream) 6%, var(--paper-cream) 100%);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 2px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+.book__pages-stack::before {
+  /* tepi halaman bertumpuk */
+  content: '';
+  position: absolute;
+  inset: 3px 3px 3px 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(120, 100, 70, 0.12) 0px,
+    transparent 1px,
+    transparent 3px
+  );
+  border-radius: 1px 5px 5px 1px;
+}
+
+.book__cover {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  border-radius: 2px 6px 6px 2px;
+  background:
+    linear-gradient(135deg, #4a3221 0%, var(--wood-brown) 45%, #2c1c11 100%);
+  box-shadow:
+    0 30px 70px -20px rgba(0, 0, 0, 0.8),
+    inset 0 0 0 1px rgba(217, 181, 113, 0.15),
+    inset 0 0 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12% 10%;
+  cursor: pointer;
+}
+
+.book__spine-shadow {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent);
+  border-radius: 2px 0 0 2px;
+}
+
+.book__ornament {
+  position: absolute;
+  inset: 8%;
+  border: 1px solid rgba(217, 181, 113, 0.35);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.book__ornament::before,
+.book__ornament::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--gold-dim);
+}
+
+.book__ornament::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.book__ornament::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.book__title {
+  text-align: center;
+  color: var(--gold-bright);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 5vw, 1.6rem);
+  line-height: 1.5;
+  text-shadow: 0 1px 12px rgba(217, 181, 113, 0.25);
+}
+
+.book__subtitle {
+  margin-top: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(237, 226, 200, 0.55);
+}
+
+/* Lilin di samping buku */
+.candle {
+  position: absolute;
+  bottom: 32%;
+  right: -14%;
+  width: 22px;
+  z-index: 2;
+}
+
+.candle__body {
+  width: 14px;
+  height: 46px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #f2e6c9, #d9c79a);
+  border-radius: 2px 2px 1px 1px;
+}
+
+.candle__flame {
+  width: 8px;
+  height: 16px;
+  margin: 0 auto -2px;
+  background: radial-gradient(ellipse at 50% 70%, #fff2c4 0%, var(--gold-bright) 45%, rgba(217, 140, 60, 0) 80%);
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  filter: drop-shadow(0 0 8px rgba(217, 181, 113, 0.7));
+}
+
+@media (max-width: 640px) {
+  .candle {
+    display: none;
+  }
+}

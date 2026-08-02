@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Di Antara Lembar yang Tak Pernah Kuberikan
+   style.css — reset, variabel, tipografi dasar
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:root {
+  /* Palet — buku tua di atas meja kayu */
+  --ink-black: #0a0906;
+  --navy-deep: #10182a;
+  --navy-mid: #1a2338;
+  --wood-brown: #3d2a1e;
+  --wood-brown-light: #5a3e2a;
+  --paper-cream: #ede2c8;
+  --paper-cream-dim: #d8c9a3;
+  --gold-dim: #a9834a;
+  --gold-bright: #d9b571;
+  --gold-glow: rgba(217, 181, 113, 0.35);
+
+  /* Tipografi */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'EB Garamond', serif;
+  --font-ui: 'Jost', sans-serif;
+
+  /* Ritme & waktu */
+  --ease-slow: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 0.4s;
+  --dur-mid: 1.2s;
+  --dur-slow: 2.4s;
+
+  --z-backdrop: 1;
+  --z-particles: 5;
+  --z-stage: 10;
+  --z-ui: 50;
+  --z-overlay: 100;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink-black);
+  color: var(--paper-cream);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--paper-cream);
+  letter-spacing: 0.01em;
+}
+
+p {
+  max-width: 60ch;
+}
+
+button {
+  font-family: var(--font-ui);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--gold-bright);
+}
+
+::selection {
+  background: var(--gold-glow);
+  color: var(--ink-black);
+}
+
+/* Label antarmuka kecil — huruf sans, spasi lebar, terasa "alat" bukan "isi buku" */
+.ui-label {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--paper-cream-dim);
+  font-weight: 400;
+}
+
+/* Scrollbar tipis, warna senada */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--wood-brown-light);
+  border-radius: 3px;
+}
+
+/* Hormati preferensi kurangi gerak */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
